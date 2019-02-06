@@ -1,0 +1,139 @@
+@import './vars.css';
+@import '~@phosphor/widgets/style/index.css';
+@import './dockpanel.css';
+@import './header.css';
+@import './launcher.css';
+@import './menu.css';
+@import './menubar.css';
+@import './modal.css';
+@import './tabbar.css';
+
+
+/**********/
+/* common */
+/**********/
+body {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  font-family: 'Roboto';
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+    background: transparent;
+}
+::-webkit-scrollbar-thumb {
+    background: var(--highlight-purple);
+}
+
+/**********/
+/* /common */
+/**********/
+
+body.dark {
+  color: var(--dark-color);
+  background-color: var(--dark-bg-color2);
+}
+body.dark a {
+  color: var(--dark-color);
+}
+
+body.light {
+  color: var(--light-color);
+  background-color: var(--light-bg-color2);
+}
+
+body.light a {
+  color: var(--light-color);
+}
+
+body div.footer {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  bottom: 10px;
+}
+
+button {
+  width: 100px;
+}
+
+button:hover {
+    color: white;
+    background-color: var(--highlight-purple);
+}
+
+#menuBar {
+  flex: 0 0 auto;
+  height: 25px;
+  margin-left: 85%;
+  display:flex;
+  justify-content: center;
+}
+
+body.dark #menuBar {
+  background-color: var(--dark-bg-color2);
+  color: var(--dark-color);
+}
+
+body.light #menuBar {
+  background-color: var(--light-bg-color2);
+  color: var(--light-color);
+}
+
+#main {
+  flex: 1 1 auto;
+  top: 0px;
+  margin-bottom:30px;
+}
+
+#main > .p-TabBar > .p-TabBar-content {
+  margin-left: 50px;
+}
+
+body.dark #main > .p-TabBar > .p-TabBar-content {
+  border-bottom: 1px solid var(--dark-border);
+}
+
+body.light #main > .p-TabBar > .p-TabBar-content {
+  border-bottom: 1px solid var(--light-border);
+}
+
+.p-TabBar > .p-TabBar-content > .p-TabBar-tab {
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+body.dark .p-TabBar > .p-TabBar-content > .p-mod-current,
+body.light .p-TabBar > .p-TabBar-content > .p-mod-current {
+  border-bottom: 3px solid var(--highlight-purple);
+}
+
+body.dark .p-SplitPanel {
+  background-color: var(--dark-bg-color);
+}
+
+
+body.light .p-SplitPanel {
+  background-color: var(--light-bg-color);
+}
+
+body.dark tr:hover > td {
+  background-color: var(--dark-bg-color2)
+}
+
+body.light tr:hover > td {
+  background-color: var(--light-bg-color2)
+}

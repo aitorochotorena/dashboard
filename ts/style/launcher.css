@@ -1,0 +1,36 @@
+.p-SplitPanel#home {
+    display: flex;
+    flex-direction: column;
+}
+
+.p-SplitPanel#home div.home-controls {
+    display:flex;
+    flex-direction: row;
+    margin:auto;
+    height: 50%;
+    width:90%;
+}
+
+.p-SplitPanel#home div.home-controls > select {
+    flex: 2;
+    height:30px;
+}
+
+.p-SplitPanel#home div.home-controls > div {
+    flex: 8;
+}
+
+.p-SplitPanel#home div.home-controls > button {
+    flex: 1;
+    height:30px;
+}
+
+.p-SplitPanel#home div.home-controls > div.notebook-search {
+    height:30px;
+    display: flex;
+    flex-direction: row;
+}
+
+.p-SplitPanel#home div.home-controls > div.notebook-search > input {
+    flex: 8;
+}
