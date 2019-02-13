@@ -3,13 +3,10 @@ run:  ## run server
 
 
 tests: ## Clean and Make unit tests
-	python3 -m nose2 -v tests --with-coverage --coverage=dashboard
+	python3 -m pytest tests --cov=dashboard
 
 test: lint ## run the tests for travis CI
-	@ python3 -m nose2 -v tests --with-coverage --coverage=dashboard --fail-fast
-
-testall: ## run the tests including those that hit the actual api
-	@ python3 -m nose2 -v tests --with-coverage --coverage=dashboard
+	@ python3 -m pytest tests --cov=dashboard
 
 lint: ## run linter
 	pylint dashboard || echo

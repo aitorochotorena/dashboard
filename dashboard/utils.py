@@ -6,8 +6,7 @@ except ImportError:
 import requests
 import tornado
 import ujson
-
-from .log_utils import LOG as log
+import logging as log
 
 
 def parse_args(argv):

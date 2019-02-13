@@ -43,15 +43,18 @@ class HTTPHandler(tornado.web.RequestHandler):
         return content
 
 
-class WebSocketHandler(tornado.websocket.WebSocketHandler):
-    '''Just a default handler'''
-    def initialize(self, *args, **kwargs):
-        '''Initialize the server competition registry handler
+class HTMLHandler(HTTPHandler):
+    def initialize(self, template=None, template_kwargs=None, **kwargs):
+        super(HTMLHandler, self).initialize()
+        self.template = template
+        self.template_kwargs = template_kwargs or {}
 
-        This handler is responsible for managing competition
-        registration.
-
-        Arguments:
-            competitions {dict} -- a reference to the server's dictionary of competitions
-        '''
-        super(WebSocketHandler, self).initialize(*args, **kwargs)
+    def get(self, *args):
+        '''Get the login page'''
+        if not self.template:
+            self.redirect('/')
+        else:
+            if self.request.path == '/logout':
+                self.clear_cookie("user")
+            template = self.render_template(self.template, **self.template_kwargs)
+            self.write(template)

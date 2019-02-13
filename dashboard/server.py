@@ -4,7 +4,7 @@ import tornado.ioloop
 import tornado.web
 
 from .utils import log, parse_args
-from .handlers import HTMLOpenHandler
+from .handler import HTMLHandler
 
 
 def getContext(cache_type='none'):
@@ -18,9 +18,9 @@ class ServerApplication(tornado.web.Application):
         static = os.path.join(root, 'static')
 
         default_handlers = [
-            (r"/", HTMLOpenHandler, {'template': 'index.html'}),
+            (r"/", HTMLHandler, {'template': 'index.html'}),
             (r"/static/(.*)", tornado.web.StaticFileHandler, {"path": static}),
-            (r"/(.*)", HTMLOpenHandler, {'template': '404.html'})
+            (r"/(.*)", HTMLHandler, {'template': '404.html'})
         ]
 
         settings = {
