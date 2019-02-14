@@ -3,10 +3,10 @@ run:  ## run server
 
 
 tests: ## Clean and Make unit tests
-	python3 -m pytest tests --cov=dashboard
+	python3 -m pytest -v tests --cov=dashboard
 
 test: lint ## run the tests for travis CI
-	@ python3 -m pytest tests --cov=dashboard
+	@ python3 -m pytest -v tests --cov=dashboard
 
 lint: ## run linter
 	pylint dashboard || echo
