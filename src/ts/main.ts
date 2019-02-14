@@ -5,7 +5,7 @@ import {LauncherWidget} from './launcher';
 import {DashboardWidget} from './dashboard';
 import {showLoader, hideLoader} from './loader';
 
-import '../ts/style/index.css';
+import '../src/style/index.css';
 
 export
 function main(): void {
