@@ -1,6 +1,5 @@
-import {
-  DockPanel, BoxPanel
-} from '@phosphor/widgets';
+import {DockPanel, BoxPanel} from '@phosphor/widgets';
+import {NotebookWidget} from './notebook';
 
 export
 class DashboardWidget extends DockPanel {
@@ -9,6 +8,13 @@ class DashboardWidget extends DockPanel {
         this.id = 'dock';
         this.title.label = 'Dashboard';
         BoxPanel.setStretch(this, 1);
+    }
+
+    add(result: {[key: string]: string}): void {
+        let name = result['name'];
+        let id = result['id'];
+        let port = result['port'];
+        this.addWidget(new NotebookWidget(name, id, port));
     }
 
 }

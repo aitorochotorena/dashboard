@@ -10,5 +10,5 @@ class SearchHandler(HTTPHandler):
     def get(self, *args):
         '''Get the login page'''
         with self.dashboard.session() as session:
-            vals = [n.name for n in session.query(NotebookSQL).all()]
+            vals = [n.to_dict() for n in session.query(NotebookSQL).filter(NotebookSQL.name.like('%' + self.get_argument('val', '') + '%')).limit(10)]
         self.write({'values': vals})

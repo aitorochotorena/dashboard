@@ -42,6 +42,13 @@ class HTTPHandler(tornado.web.RequestHandler):
         content = template.render(**kwargs)
         return content
 
+    def set_default_headers(self, *args, **kwargs):
+        self.set_header("Access-Control-Allow-Origin", "*")
+        self.set_header("Access-Control-Allow-Headers", "x-requested-with")
+        self.set_header("Access-Control-Allow-Methods", "POST, GET, OPTIONS")
+        self.set_header("Access-Control-Allow-Methods", "POST, GET, OPTIONS")
+        self.set_header("Content-Security-Policy", "frame-ancestors 'self' localhost:* ")
+
 
 class HTMLHandler(HTTPHandler):
     def initialize(self, template=None, template_kwargs=None, **kwargs):

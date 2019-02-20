@@ -1,9 +1,12 @@
 import os
+import os.path
 import logging
+import shutil
 
 import tornado.ioloop
 import tornado.web
 
+from tempfile import mkdtemp
 from traitlets.config.application import Application
 from traitlets import Unicode, Integer, Bool, Any
 
@@ -62,12 +65,19 @@ class Dashboard(Application):
         help='Enable uploading of notebooks'
     )
 
+    rundir = Unicode(
+        '',
+        config=True,
+        help="Directory to store notebooks and user info"
+    )
+
     aliases = {
         'port': 'Dashboard.port',
         'autoreload': 'Dashboard.autoreload',
         'sqlalchemy': 'Dashboard.sqlalchemy',
         'upload': 'Dashboard.upload_enable',
         'baseurl': 'Dashboard.baseurl',
+        'rundir': 'Dashboard.rundir',
     }
 
     def _init_sqlalchemy(self, sqlalchemy_conn_string):
@@ -94,9 +104,16 @@ class Dashboard(Application):
 
     def start(self):
         self.log_level = logging.DEBUG
+
+        # track sessions
+        self.subprocesses = {}
+
+        # setup rundir
+        if not self.rundir:
+            self.rundir = mkdtemp()
+
         root = os.path.join(os.path.dirname(__file__), 'assets')
         static = os.path.join(root, 'static')
-
         self.app = tornado.web.Application(
             base_url=self.baseurl,
             autoreload=self.autoreload,
@@ -122,11 +139,11 @@ class Dashboard(Application):
     def listen(self):
         self.app.listen(self.port)
         self.log.info('Dashboard listening on port %s.' % self.port)
-
+        self.log.info('Dashboard rundir: %s' % self.rundir)
         try:
             tornado.ioloop.IOLoop.current().start()
         finally:
-            pass
+            shutil.rmtree(self.rundir)
 
 
 main = Dashboard.launch_instance

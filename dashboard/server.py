@@ -1,5 +1,4 @@
 import sys
-from .utils import log
 from .app import Dashboard
 
 
@@ -9,7 +8,7 @@ def main():
     try:
         d.start()
     except KeyboardInterrupt:
-        log.critical('Exiting...')
+        d.log.critical('Exiting...')
 
 
 if __name__ == "__main__":

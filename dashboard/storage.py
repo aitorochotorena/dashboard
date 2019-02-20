@@ -19,11 +19,12 @@ class NotebookSQL(Base):
                            created=nb['created'],
                            modified=nb['modified'])
 
-    def to_dict(self, nb):
-        return NotebookSQL(name=self.name,
-                           notebook=self.notebook,
-                           created=self.created,
-                           modified=self.modified)
+    def to_dict(self):
+        return dict(id=self.id,
+                    name=self.name,
+                    notebook=self.notebook,
+                    created=self.created.strftime('%m/%d/%Y %H:%M:%S'),
+                    modified=self.modified.strftime('%m/%d/%Y %H:%M:%S'))
 
     def __repr__(self):
-        return "<Notebook(name='{}', user='{}', privacy='{}', level='{}'>".format(self.name, self.user, self.privacy)
+        return "<Notebook(name='{}'>".format(self.name)

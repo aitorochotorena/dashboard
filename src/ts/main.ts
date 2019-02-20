@@ -19,17 +19,12 @@ function main(): void {
   let main = new TabPanel();
   main.id = 'main';
 
-  let home = new LauncherWidget();
-  main.addWidget(home);
-  // home.setRelativeSizes([.3, .7]);
-  // home.addWidget(dock);
-
   let dock = new DashboardWidget();
+  let home = new LauncherWidget(dock);
+  // home.setRelativeSizes([.3, .7]);
+
+  main.addWidget(home);
   main.addWidget(dock);
-
-  /* Reference Data Tab */
-  // let input = new BoxPanel({ direction: 'top-to-bottom', spacing: 0 });
-
   window.onresize = () => { main.update(); };
   Widget.attach(main, document.body);
 }

@@ -1,6 +1,4 @@
-from datetime import datetime
 from .handler import HTTPHandler
-from .storage import NotebookSQL
 
 
 class SaveHandler(HTTPHandler):
@@ -10,9 +8,4 @@ class SaveHandler(HTTPHandler):
 
     def get(self, *args):
         '''Get the login page'''
-        created = datetime.now()
-        modified = datetime.now()
-
-        with self.dashboard.session() as session:
-            vals = [n.name for n in session.query(NotebookSQL).all()]
-        self.write({'values': vals})
+        self.write({'values': []})
