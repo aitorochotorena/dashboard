@@ -18,9 +18,22 @@ body {
 }
 
 div#notebook {
-  overflow: visible;
+  overflow: auto;
+  padding-right:5px;
   border: none;
   padding: 0px;
+  resize:both;
+  min-height: 0px;
+  height:100%;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+    height:5px;
+    background: transparent;
+}
+::-webkit-scrollbar-thumb {
+    background: #9c27b0;
 }
 
 div#notebook-container{
