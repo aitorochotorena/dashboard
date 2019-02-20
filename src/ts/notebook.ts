@@ -15,8 +15,8 @@ class NotebookWidget extends Widget {
 
         showLoader();
         setTimeout(() => {
-            hideLoader();
             iframe.src = 'http://localhost:' + port
+            hideLoader(500);
         }, 2000);
         this.node.appendChild(iframe);
     }

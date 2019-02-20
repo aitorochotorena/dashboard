@@ -496,8 +496,8 @@ class NotebookWidget extends widgets_1.Widget {
         iframe.setAttribute('referrerpolicy', 'no-referrer');
         loader_1.showLoader();
         setTimeout(() => {
-            loader_1.hideLoader();
             iframe.src = 'http://localhost:' + port;
+            loader_1.hideLoader(500);
         }, 2000);
         this.node.appendChild(iframe);
     }
