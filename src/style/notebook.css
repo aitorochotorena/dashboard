@@ -5,6 +5,10 @@ div.notebook-widget > iframe {
     overflow: hidden;
 }
 
+body.dark div.notebook-widget > iframe {
+  filter: invert(100);
+}
+
 /*
 from: https://github.com/ian-r-rose/jupyterlab/blob/d7ec6ec271fcbeed2a0f5b1ed652a4802a430496/packages/htmlviewer/style/index.css;
 
