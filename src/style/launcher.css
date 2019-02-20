@@ -11,6 +11,11 @@
     width:90%;
 }
 
+.p-SplitPanel#home div.home-controls > *{
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
 .p-SplitPanel#home div.home-controls > select {
     flex: 2;
     height:30px;

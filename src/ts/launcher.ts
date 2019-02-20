@@ -1,6 +1,22 @@
-import {
-  SplitPanel
-} from '@phosphor/widgets';
+import {SplitPanel} from '@phosphor/widgets';
+import {request, RequestResult} from './request'
+
+function autocomplete(input: HTMLInputElement | null): Promise<string[]> {
+    if(input === undefined || !input){
+        return new Promise<string[]>((resolve, reject) => {reject();});
+    }
+
+    return new Promise<string[]>((resolve, reject) => {
+        request('get', '/api/v1/autocomplete?val=' + input.value).then((res: RequestResult) => {
+            if(res.ok){
+                resolve((res.json() as {[key: string]: [string]})['values']);
+            } else {
+                reject();
+            }
+        });
+    });
+}
+
 
 export
 class LauncherWidget extends SplitPanel {
@@ -40,7 +56,11 @@ class LauncherWidget extends SplitPanel {
         })
 
         /* Visualizers */
-        div.appendChild(this._getNotebookSearch());
+        let search = this._getNotebookSearch();
+        search.addEventListener('input', () => {
+            autocomplete(search.querySelector('input'));
+        })
+        div.appendChild(search);
         div.appendChild(this._getPaste());
         div.appendChild(this._getUpload());
         (div.querySelector('.notebook-search') as HTMLDivElement).style.display = 'flex';
