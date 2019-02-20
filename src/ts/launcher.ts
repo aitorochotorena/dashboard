@@ -1,5 +1,6 @@
 import {SplitPanel} from '@phosphor/widgets';
 import {request, RequestResult} from './request'
+import {baseUrl} from './utils';
 
 function autocomplete(input: HTMLInputElement | null): Promise<string[]> {
     if(input === undefined || !input){
@@ -7,7 +8,7 @@ function autocomplete(input: HTMLInputElement | null): Promise<string[]> {
     }
 
     return new Promise<string[]>((resolve, reject) => {
-        request('get', '/api/v1/autocomplete?val=' + input.value).then((res: RequestResult) => {
+        request('get', baseUrl() + 'api/v1/search?val=' + input.value).then((res: RequestResult) => {
             if(res.ok){
                 resolve((res.json() as {[key: string]: [string]})['values']);
             } else {
@@ -58,7 +59,18 @@ class LauncherWidget extends SplitPanel {
         /* Visualizers */
         let search = this._getNotebookSearch();
         search.addEventListener('input', () => {
-            autocomplete(search.querySelector('input'));
+            autocomplete(search.querySelector('input')).then((res: string[]) => {
+                let datalist = search.querySelector('datalist');
+                if(!datalist){
+                    return;
+                }
+                while(datalist.lastChild){datalist.removeChild(datalist.lastChild)}
+                for(let j of res){
+                    let option = document.createElement('option');
+                    option.value = j;
+                    datalist.appendChild(option);
+                }
+            });
         })
         div.appendChild(search);
         div.appendChild(this._getPaste());
@@ -81,7 +93,12 @@ class LauncherWidget extends SplitPanel {
         input.type = 'text';
         input.placeholder = 'search...';
 
+        let datalist = document.createElement('datalist');
+        datalist.id = 'search-datalist';
+        input.setAttribute('list', 'search-datalist');
+
         div.appendChild(input);
+        div.appendChild(datalist);
         div.style.display = 'none';
         return div;
     }

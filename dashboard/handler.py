@@ -47,14 +47,17 @@ class HTMLHandler(HTTPHandler):
     def initialize(self, template=None, template_kwargs=None, **kwargs):
         super(HTMLHandler, self).initialize()
         self.template = template
+        self.baseurl = kwargs.get('baseurl', '/')
         self.template_kwargs = template_kwargs or {}
 
     def get(self, *args):
         '''Get the login page'''
+        self.template_kwargs['baseurl'] = self.baseurl
+
         if not self.template:
-            self.redirect('/')
+            self.redirect(self.baseurl)
         else:
-            if self.request.path == '/logout':
+            if self.request.path == self.baseurl + 'logout':
                 self.clear_cookie("user")
             template = self.render_template(self.template, **self.template_kwargs)
             self.write(template)

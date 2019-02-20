@@ -9,21 +9,6 @@ import ujson
 import logging as log
 
 
-def parse_args(argv):
-    args = []
-    kwargs = {}
-    for arg in argv:
-        if '--' not in arg and '-' not in arg:
-            log.debug('ignoring argument: %s', arg)
-            continue
-        if '=' in arg:
-            k, v = arg.replace('-', '').split('=')
-            kwargs[k] = v
-        else:
-            args.append(arg.replace('-', ''))
-    return args, kwargs
-
-
 def parse_body(req, **fields):
     try:
         data = tornado.escape.json_decode(req.body)
