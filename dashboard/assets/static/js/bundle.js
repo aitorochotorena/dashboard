@@ -109,7 +109,9 @@ class DashboardWidget extends widgets_1.DockPanel {
         let name = result['name'];
         let id = result['id'];
         let port = result['port'];
-        this.addWidget(new notebook_1.NotebookWidget(name, id, port));
+        let widget = new notebook_1.NotebookWidget(name, id, port);
+        this.addWidget(widget);
+        this.selectWidget(widget);
     }
 }
 exports.DashboardWidget = DashboardWidget;

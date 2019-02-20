@@ -14,7 +14,9 @@ class DashboardWidget extends DockPanel {
         let name = result['name'];
         let id = result['id'];
         let port = result['port'];
-        this.addWidget(new NotebookWidget(name, id, port));
+        let widget = new NotebookWidget(name, id, port);
+        this.addWidget(widget);
+        this.selectWidget(widget);
     }
 
 }

@@ -1,5 +1,6 @@
 #!/bin/env python
 import sys
+import os.path
 import subprocess
 
 
@@ -15,6 +16,9 @@ def launch_voila(notebook_path, port=8866):
     v.notebook_path = notebook_path
     v.port = int(port)
     v.extra_tornado_settings = {'headers': {'Content-Security-Policy': "frame-ancestors 'self' localhost:*"}}
+    v.nbconvert_template_paths.append(os.path.abspath(os.path.join(os.path.dirname(__file__), 'assets', 'voila', 'dashboard', 'nbconvert_templates')))
+    v.template_paths.append(os.path.abspath(os.path.join(os.path.dirname(__file__), 'assets', 'voila',  'dashboard', 'templates')))
+    v.template = 'dashboard'
     v.start()
 
 if __name__ == '__main__':
