@@ -21,6 +21,7 @@ def launch_voila(notebook_path, port=8866):
     v.template = 'dashboard'
     v.start()
 
+
 if __name__ == '__main__':
     path = sys.argv[1]
     port = sys.argv[2] if len(sys.argv) > 2 else 8866

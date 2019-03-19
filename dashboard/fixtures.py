@@ -52,5 +52,6 @@ def add_fixtures(sqlalchemy_conn_string='sqlite:///tmp.db'):
         session.add(nb)
     session.commit()
 
+
 if __name__ == '__main__':
     add_fixtures()

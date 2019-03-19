@@ -1,5 +1,5 @@
-import {Widget} from '@phosphor/widgets';
-import {showLoader, hideLoader} from './loader';
+import {Widget} from "@phosphor/widgets";
+import {hideLoader, showLoader} from "./loader";
 
 export
 class NotebookWidget extends Widget {
@@ -9,13 +9,13 @@ class NotebookWidget extends Widget {
         this.title.label = name;
         this.title.closable = true;
 
-        this.node.classList.add('notebook-widget');
-        let iframe = document.createElement('iframe');
-        iframe.setAttribute('referrerpolicy', 'no-referrer')
+        this.node.classList.add("notebook-widget");
+        const iframe = document.createElement("iframe");
+        iframe.setAttribute("referrerpolicy", "no-referrer");
 
         showLoader();
         setTimeout(() => {
-            iframe.src = 'http://localhost:' + port
+            iframe.src = "http://localhost:" + port;
             hideLoader(500);
         }, 2000);
         this.node.appendChild(iframe);

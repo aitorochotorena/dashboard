@@ -9,8 +9,8 @@ test: lint ## run the tests for travis CI
 	@ python3 -m pytest -v tests --cov=dashboard
 
 lint: ## run linter
-	pylint dashboard || echo
 	flake8 dashboard 
+	yarn lint
 
 annotate: ## MyPy type annotation check
 	mypy -s dashboard
