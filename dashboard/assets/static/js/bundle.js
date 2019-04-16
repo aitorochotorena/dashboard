@@ -101,15 +101,15 @@ const notebook_1 = __webpack_require__(/*! ./notebook */ "./build/notebook.js");
 class DashboardWidget extends widgets_1.DockPanel {
     constructor() {
         super();
-        this.id = 'dock';
-        this.title.label = 'Dashboard';
+        this.id = "dock";
+        this.title.label = "Dashboard";
         widgets_1.BoxPanel.setStretch(this, 1);
     }
     add(result) {
-        let name = result['name'];
-        let id = result['id'];
-        let port = result['port'];
-        let widget = new notebook_1.NotebookWidget(name, id, port);
+        const name = result.name;
+        const id = result.id;
+        const port = result.port;
+        const widget = new notebook_1.NotebookWidget(name, id, port);
         this.addWidget(widget);
         this.selectWidget(widget);
     }
@@ -132,35 +132,36 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const widgets_1 = __webpack_require__(/*! @phosphor/widgets */ "./node_modules/@phosphor/widgets/lib/index.js");
 class Header extends widgets_1.Widget {
     static createNode() {
-        let node = document.createElement('div');
-        node.classList.add('header');
-        let a = document.createElement('a');
-        a.href = '/';
+        const node = document.createElement("div");
+        node.classList.add("header");
+        const a = document.createElement("a");
+        a.href = "/";
         // let h = document.createElement('img');
+        // tslint:disable-next-line: max-line-length
         // h.src = "data:image/png;base64,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";
         // a.appendChild(h)
         node.appendChild(a);
-        let username = document.createElement('span');
+        const username = document.createElement("span");
         username.textContent = document.user;
-        username.classList.add('username');
+        username.classList.add("username");
         /* icons */
-        let light = document.createElement('div');
-        light.id = 'lighticon';
+        const light = document.createElement("div");
+        light.id = "lighticon";
         light.onclick = () => {
-            document.body.classList.remove('dark');
-            document.body.classList.add('light');
-            dark.classList.remove('active-icon');
-            light.classList.add('active-icon');
+            document.body.classList.remove("dark");
+            document.body.classList.add("light");
+            dark.classList.remove("active-icon");
+            light.classList.add("active-icon");
         };
-        document.body.classList.add('light');
-        light.classList.add('active-icon');
-        let dark = document.createElement('div');
-        dark.id = 'darkicon';
+        document.body.classList.add("light");
+        light.classList.add("active-icon");
+        const dark = document.createElement("div");
+        dark.id = "darkicon";
         dark.onclick = () => {
-            document.body.classList.remove('light');
-            document.body.classList.add('dark');
-            dark.classList.add('active-icon');
-            light.classList.remove('active-icon');
+            document.body.classList.remove("light");
+            document.body.classList.add("dark");
+            dark.classList.add("active-icon");
+            light.classList.remove("active-icon");
         };
         node.appendChild(light);
         node.appendChild(dark);
@@ -171,7 +172,7 @@ class Header extends widgets_1.Widget {
         super({ node: Header.createNode() });
         this.setFlag(widgets_1.Widget.Flag.DisallowLayout);
         this.title.closable = false;
-        this.node.id = 'appheader';
+        this.node.id = "appheader";
     }
 }
 exports.Header = Header;
@@ -210,9 +211,9 @@ const request_1 = __webpack_require__(/*! ./request */ "./build/request.js");
 const utils_1 = __webpack_require__(/*! ./utils */ "./build/utils.js");
 function autocomplete(input) {
     return new Promise((resolve, reject) => {
-        request_1.request('get', utils_1.baseUrl() + 'api/v1/search?val=' + input).then((res) => {
+        request_1.request("get", utils_1.baseUrl() + "api/v1/search?val=" + input).then((res) => {
             if (res.ok) {
-                resolve(res.json()['values']);
+                resolve(res.json().values);
             }
             else {
                 reject();
@@ -222,7 +223,7 @@ function autocomplete(input) {
 }
 function launch(input) {
     return new Promise((resolve, reject) => {
-        request_1.request('get', utils_1.baseUrl() + 'api/v1/launch?val=' + input).then((res) => {
+        request_1.request("get", utils_1.baseUrl() + "api/v1/launch?val=" + input).then((res) => {
             if (res.ok) {
                 resolve(res.json());
             }
@@ -235,85 +236,84 @@ function launch(input) {
 class LauncherWidget extends widgets_1.SplitPanel {
     constructor(dashboard) {
         super();
-        this.id = 'home';
-        this.title.label = 'Home';
+        this.id = "home";
+        this.title.label = "Home";
         this._dashboard = dashboard;
         /* Construct controls module */
-        let div = document.createElement('div');
-        div.classList.add('home-controls');
+        const div = document.createElement("div");
+        div.classList.add("home-controls");
         /* Construct selector */
-        let context = document.createElement('select');
-        let option1 = document.createElement('option');
-        let option2 = document.createElement('option');
-        let option3 = document.createElement('option');
-        option1.text = 'notebook';
-        option2.text = 'paste';
-        option3.text = 'upload';
+        const context = document.createElement("select");
+        const option1 = document.createElement("option");
+        const option2 = document.createElement("option");
+        const option3 = document.createElement("option");
+        option1.text = "notebook";
+        option2.text = "paste";
+        option3.text = "upload";
         context.add(option1);
         context.add(option2);
         context.add(option3);
         div.appendChild(context);
         /* Display appropriate input area for selected option */
-        context.addEventListener('change', (e) => {
-            if (context.value == 'paste') {
-                div.querySelector('.notebook-paste').style.display = 'flex';
-                div.querySelector('.notebook-upload').style.display = 'none';
-                div.querySelector('.notebook-search').style.display = 'none';
+        context.addEventListener("change", (e) => {
+            if (context.value === "paste") {
+                div.querySelector(".notebook-paste").style.display = "flex";
+                div.querySelector(".notebook-upload").style.display = "none";
+                div.querySelector(".notebook-search").style.display = "none";
             }
-            else if (context.value == 'upload') {
-                div.querySelector('.notebook-paste').style.display = 'none';
-                div.querySelector('.notebook-upload').style.display = 'flex';
-                div.querySelector('.notebook-search').style.display = 'none';
+            else if (context.value === "upload") {
+                div.querySelector(".notebook-paste").style.display = "none";
+                div.querySelector(".notebook-upload").style.display = "flex";
+                div.querySelector(".notebook-search").style.display = "none";
             }
             else {
-                div.querySelector('.notebook-paste').style.display = 'none';
-                div.querySelector('.notebook-upload').style.display = 'none';
-                div.querySelector('.notebook-search').style.display = 'flex';
+                div.querySelector(".notebook-paste").style.display = "none";
+                div.querySelector(".notebook-upload").style.display = "none";
+                div.querySelector(".notebook-search").style.display = "flex";
             }
         });
         /* Visualizers */
         /* Search */
-        let search = this._getNotebookSearch();
-        search.addEventListener('input', () => {
-            let input = search.querySelector('input');
+        const search = this._getNotebookSearch();
+        search.addEventListener("input", () => {
+            const input = search.querySelector("input");
             if (!input || !input.value) {
                 return;
             }
             autocomplete(input.value).then((res) => {
-                let datalist = search.querySelector('datalist');
+                const datalist = search.querySelector("datalist");
                 if (!datalist) {
                     return;
                 }
                 while (datalist.lastChild) {
                     datalist.removeChild(datalist.lastChild);
                 }
-                for (let val of res) {
-                    let option = document.createElement('option');
-                    option.value = val['id'] + ' - ' + val['name'];
-                    option.innerText = val['created'];
+                for (const val of res) {
+                    const option = document.createElement("option");
+                    option.value = val.id + " - " + val.name;
+                    option.innerText = val.created;
                     datalist.appendChild(option);
                 }
             });
         });
         div.appendChild(search);
         /* Paste */
-        let paste = this._getPaste();
+        const paste = this._getPaste();
         div.appendChild(paste);
         /* Upload */
-        let upload = this._getUpload();
+        const upload = this._getUpload();
         div.appendChild(upload);
-        div.querySelector('.notebook-search').style.display = 'flex';
+        div.querySelector(".notebook-search").style.display = "flex";
         /* Submit/Launch */
-        let but = document.createElement('button');
-        but.type = 'submit';
-        but.textContent = '>>';
-        but.addEventListener('click', () => {
+        const but = document.createElement("button");
+        but.type = "submit";
+        but.textContent = ">>";
+        but.addEventListener("click", () => {
             this._save(context, search, paste, upload).then((res) => {
-                this._launch(context, search, paste, upload).then((res) => {
-                    console.log(res);
-                    this._dashboard.add(res);
+                this._launch(context, search, paste, upload).then((res2) => {
+                    this._dashboard.add(res2);
                     if (this.parent) {
-                        let parent = this.parent.parent; // 2 levels up
+                        const parent = this.parent.parent; // 2 levels up
                         parent.currentWidget = this._dashboard; // set to dashboard
                     }
                 });
@@ -323,18 +323,19 @@ class LauncherWidget extends widgets_1.SplitPanel {
         this.node.append(div);
     }
     _save(context, search, paste, upload) {
-        if (context.value === 'notebook') {
+        if (context.value === "notebook") {
             return new Promise((resolve) => { resolve({}); });
         }
         else {
-            console.warn('Not Implemented');
+            // tslint:disable-next-line: no-console
+            console.warn("Not Implemented");
             return new Promise((resolve) => { resolve({}); });
         }
     }
     _launch(context, search, paste, upload) {
-        if (context.value === 'notebook') {
+        if (context.value === "notebook") {
             return new Promise((resolve, reject) => {
-                let input = search.querySelector('input');
+                const input = search.querySelector("input");
                 if (!input || !input.value) {
                     reject({});
                     return;
@@ -345,45 +346,46 @@ class LauncherWidget extends widgets_1.SplitPanel {
             });
         }
         else {
-            console.warn('Not Implemented');
+            // tslint:disable-next-line: no-console
+            console.warn("Not Implemented");
             return new Promise((resolve) => { resolve({}); });
         }
     }
     _getNotebookSearch() {
-        let div = document.createElement('div');
-        div.classList.add('notebook-search');
-        let input = document.createElement('input');
-        input.type = 'text';
-        input.placeholder = 'search...';
-        let datalist = document.createElement('datalist');
-        datalist.id = 'search-datalist';
-        input.setAttribute('list', 'search-datalist');
+        const div = document.createElement("div");
+        div.classList.add("notebook-search");
+        const input = document.createElement("input");
+        input.type = "text";
+        input.placeholder = "search...";
+        const datalist = document.createElement("datalist");
+        datalist.id = "search-datalist";
+        input.setAttribute("list", "search-datalist");
         div.appendChild(input);
         div.appendChild(datalist);
-        div.style.display = 'none';
+        div.style.display = "none";
         return div;
     }
     _getPaste() {
-        let div = document.createElement('div');
-        div.classList.add('notebook-paste');
-        let input = document.createElement('textarea');
-        input.placeholder = 'paste notebook json here...';
-        input.style.height = '300px';
-        input.style.width = '100%';
+        const div = document.createElement("div");
+        div.classList.add("notebook-paste");
+        const input = document.createElement("textarea");
+        input.placeholder = "paste notebook json here...";
+        input.style.height = "300px";
+        input.style.width = "100%";
         div.appendChild(input);
-        div.style.display = 'none';
+        div.style.display = "none";
         return div;
     }
     _getUpload() {
-        let div = document.createElement('div');
-        div.classList.add('notebook-upload');
-        let input = document.createElement('input');
-        input.type = 'file';
+        const div = document.createElement("div");
+        div.classList.add("notebook-upload");
+        const input = document.createElement("input");
+        input.type = "file";
         input.multiple = false;
-        input.style.marginLeft = 'auto';
-        input.style.marginRight = 'auto';
+        input.style.marginLeft = "auto";
+        input.style.marginRight = "auto";
         div.appendChild(input);
-        div.style.display = 'none';
+        div.style.display = "none";
         return div;
     }
 }
@@ -404,23 +406,25 @@ exports.LauncherWidget = LauncherWidget;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.loader = makeLoader();
 function makeLoader() {
-    let loader = document.createElement('div');
-    loader.classList.add('loader');
-    loader.style.display = 'none';
-    let loader_icon = document.createElement('div');
-    loader_icon.classList.add('loader_icon');
-    loader.appendChild(loader_icon);
+    // tslint:disable-next-line: no-shadowed-variable
+    const loader = document.createElement("div");
+    loader.classList.add("loader");
+    loader.style.display = "none";
+    const loaderIcon = document.createElement("div");
+    loaderIcon.classList.add("loader_icon");
+    loader.appendChild(loaderIcon);
     return loader;
 }
 exports.makeLoader = makeLoader;
-function showLoader(close_on_click = false) {
-    exports.loader.style.display = 'flex';
-    if (close_on_click) {
+function showLoader(closeOnClick = false) {
+    exports.loader.style.display = "flex";
+    if (closeOnClick) {
         exports.loader.onclick = () => {
-            exports.loader.style.display = 'none';
+            exports.loader.style.display = "none";
         };
     }
     else {
+        // tslint:disable-next-line: no-empty
         exports.loader.onclick = () => { };
     }
     document.body.appendChild(exports.loader);
@@ -447,21 +451,22 @@ exports.hideLoader = hideLoader;
 
 Object.defineProperty(exports, "__esModule", { value: true });
 const widgets_1 = __webpack_require__(/*! @phosphor/widgets */ "./node_modules/@phosphor/widgets/lib/index.js");
+const dashboard_1 = __webpack_require__(/*! ./dashboard */ "./build/dashboard.js");
 const header_1 = __webpack_require__(/*! ./header */ "./build/header.js");
 const launcher_1 = __webpack_require__(/*! ./launcher */ "./build/launcher.js");
-const dashboard_1 = __webpack_require__(/*! ./dashboard */ "./build/dashboard.js");
 const loader_1 = __webpack_require__(/*! ./loader */ "./build/loader.js");
 __webpack_require__(/*! ../src/style/index.css */ "./src/style/index.css");
 function main() {
     /* Title bar */
-    let header = new header_1.Header();
+    const header = new header_1.Header();
     widgets_1.Widget.attach(header, document.body);
     loader_1.showLoader();
     loader_1.hideLoader(1000);
-    let main = new widgets_1.TabPanel();
-    main.id = 'main';
-    let dock = new dashboard_1.DashboardWidget();
-    let home = new launcher_1.LauncherWidget(dock);
+    // tslint:disable-next-line: no-shadowed-variable
+    const main = new widgets_1.TabPanel();
+    main.id = "main";
+    const dock = new dashboard_1.DashboardWidget();
+    const home = new launcher_1.LauncherWidget(dock);
     // home.setRelativeSizes([.3, .7]);
     main.addWidget(home);
     main.addWidget(dock);
@@ -491,12 +496,12 @@ class NotebookWidget extends widgets_1.Widget {
         this.id = id;
         this.title.label = name;
         this.title.closable = true;
-        this.node.classList.add('notebook-widget');
-        let iframe = document.createElement('iframe');
-        iframe.setAttribute('referrerpolicy', 'no-referrer');
+        this.node.classList.add("notebook-widget");
+        const iframe = document.createElement("iframe");
+        iframe.setAttribute("referrerpolicy", "no-referrer");
         loader_1.showLoader();
         setTimeout(() => {
-            iframe.src = 'http://localhost:' + port;
+            iframe.src = "/voila/" + id + '/';
             loader_1.hideLoader(500);
         }, 2000);
         this.node.appendChild(iframe);
@@ -518,69 +523,69 @@ exports.NotebookWidget = NotebookWidget;
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.DEFAULT_REQUEST_OPTIONS = {
-    ignoreCache: false,
     headers: {
-        Accept: 'application/json, text/javascript, text/plain',
+        Accept: "application/json, text/javascript, text/plain",
     },
+    ignoreCache: false,
     // default max duration for a request
     timeout: 5000,
 };
 function queryParams(params = {}) {
     return Object.keys(params)
-        .map(k => encodeURIComponent(k) + '=' + encodeURIComponent(params[k]))
-        .join('&');
+        .map((k) => encodeURIComponent(k) + "=" + encodeURIComponent(params[k]))
+        .join("&");
 }
 function withQuery(url, params = {}) {
     const queryString = queryParams(params);
-    return queryString ? url + (url.indexOf('?') === -1 ? '?' : '&') + queryString : url;
+    return queryString ? url + (url.indexOf("?") === -1 ? "?" : "&") + queryString : url;
 }
 function parseXHRResult(xhr) {
     return {
+        data: xhr.responseText,
+        headers: xhr.getAllResponseHeaders(),
+        json: () => JSON.parse(xhr.responseText),
         ok: xhr.status >= 200 && xhr.status < 300,
         status: xhr.status,
         statusText: xhr.statusText,
-        headers: xhr.getAllResponseHeaders(),
-        data: xhr.responseText,
-        json: () => JSON.parse(xhr.responseText),
-        url: xhr.responseURL
+        url: xhr.responseURL,
     };
 }
 function errorResponse(xhr, message = null) {
     return {
+        data: message || xhr.statusText,
+        headers: xhr.getAllResponseHeaders(),
+        json: () => JSON.parse(message || xhr.statusText),
         ok: false,
         status: xhr.status,
         statusText: xhr.statusText,
-        headers: xhr.getAllResponseHeaders(),
-        data: message || xhr.statusText,
-        json: () => JSON.parse(message || xhr.statusText),
-        url: xhr.responseURL
+        url: xhr.responseURL,
     };
 }
-function request(method, url, queryParams = {}, body = null, options = exports.DEFAULT_REQUEST_OPTIONS) {
+function request(method, url, queryParamsOther = {}, body = null, options = exports.DEFAULT_REQUEST_OPTIONS) {
     const ignoreCache = options.ignoreCache || exports.DEFAULT_REQUEST_OPTIONS.ignoreCache;
     const headers = options.headers || exports.DEFAULT_REQUEST_OPTIONS.headers;
     const timeout = options.timeout || exports.DEFAULT_REQUEST_OPTIONS.timeout;
     return new Promise((resolve, reject) => {
         const xhr = new XMLHttpRequest();
-        xhr.open(method, withQuery(url, queryParams));
+        xhr.open(method, withQuery(url, queryParamsOther));
         if (headers) {
-            Object.keys(headers).forEach(key => xhr.setRequestHeader(key, headers[key]));
+            Object.keys(headers).forEach((key) => xhr.setRequestHeader(key, headers[key]));
         }
         if (ignoreCache) {
-            xhr.setRequestHeader('Cache-Control', 'no-cache');
+            xhr.setRequestHeader("Cache-Control", "no-cache");
         }
         xhr.timeout = timeout;
-        xhr.onload = evt => {
+        xhr.onload = (evt) => {
             resolve(parseXHRResult(xhr));
         };
-        xhr.onerror = evt => {
-            resolve(errorResponse(xhr, 'Failed to make request.'));
+        xhr.onerror = (evt) => {
+            resolve(errorResponse(xhr, "Failed to make request."));
         };
-        xhr.ontimeout = evt => {
-            resolve(errorResponse(xhr, 'Request took longer than expected.'));
+        xhr.ontimeout = (evt) => {
+            resolve(errorResponse(xhr, "Request took longer than expected."));
         };
-        if (method === 'post' && body) {
-            xhr.setRequestHeader('Content-Type', 'application/json');
+        if (method === "post" && body) {
+            xhr.setRequestHeader("Content-Type", "application/json");
             xhr.send(JSON.stringify(body));
         }
         else {
@@ -589,32 +594,6 @@ function request(method, url, queryParams = {}, body = null, options = exports.D
     });
 }
 exports.request = request;
-function requestFormData(url, formdata) {
-    let options = exports.DEFAULT_REQUEST_OPTIONS;
-    const ignoreCache = options.ignoreCache || exports.DEFAULT_REQUEST_OPTIONS.ignoreCache;
-    const headers = options.headers || exports.DEFAULT_REQUEST_OPTIONS.headers;
-    const timeout = options.timeout || exports.DEFAULT_REQUEST_OPTIONS.timeout;
-    return new Promise((resolve, reject) => {
-        const xhr = new XMLHttpRequest();
-        xhr.open('post', withQuery(url, queryParams));
-        Object.keys(headers).forEach(key => xhr.setRequestHeader(key, headers[key]));
-        if (ignoreCache) {
-            xhr.setRequestHeader('Cache-Control', 'no-cache');
-        }
-        xhr.timeout = timeout;
-        xhr.onload = evt => {
-            resolve(parseXHRResult(xhr));
-        };
-        xhr.onerror = evt => {
-            resolve(errorResponse(xhr, 'Failed to make request.'));
-        };
-        xhr.ontimeout = evt => {
-            resolve(errorResponse(xhr, 'Request took longer than expected.'));
-        };
-        xhr.send(formdata);
-    });
-}
-exports.requestFormData = requestFormData;
 
 
 /***/ }),
@@ -634,7 +613,7 @@ function baseUrl() {
         return document._BASE_URL;
     }
     else {
-        return '/';
+        return "/";
     }
 }
 exports.baseUrl = baseUrl;

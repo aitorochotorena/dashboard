@@ -19,7 +19,10 @@ from .storage import Base
 from .handler import HTMLHandler
 from .search_handler import SearchHandler
 from .launch_handler import LaunchHandler
+from .proxy_handler import ProxyHandler, ProxyWSHandler
 from ._version import __version__
+
+_kernel_id_regex = r"(?P<kernel_id>\w+-\w+-\w+-\w+-\w+)"
 
 
 class Dashboard(Application):
@@ -125,6 +128,11 @@ class Dashboard(Application):
             (r"/static/(.*)", tornado.web.StaticFileHandler, {"path": static}),
             (url_path_join(self.baseurl, r'/api/v1/search'), SearchHandler, {'dashboard': self}),
             (url_path_join(self.baseurl, r'/api/v1/launch'), LaunchHandler, {'dashboard': self}),
+            (url_path_join(self.baseurl, r'/voila/(.*)/api/kernels/(.*)/channels'), ProxyWSHandler, {'dashboard': self, 'proxy_path': '/voila/'}),
+            (url_path_join(self.baseurl, r'/voila/(.*)/api/kernels/(.*)'), ProxyHandler, {'dashboard': self, 'proxy_path': '/voila/'}),
+            (url_path_join(self.baseurl, r'/voila/(.*)/static/(.*)'), ProxyHandler, {'dashboard': self, 'proxy_path': '/voila/'}),
+            (url_path_join(self.baseurl, r'/voila/(.*)/voila/(.*)'), ProxyHandler, {'dashboard': self, 'proxy_path': '/voila/'}),
+            (url_path_join(self.baseurl, r'/voila/(.*)/'), ProxyHandler, {'dashboard': self, 'proxy_path': '/voila/'}),
             (r"/(.*)", HTMLHandler, {'template': '404.html'})
         ]
 

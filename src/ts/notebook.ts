@@ -15,7 +15,7 @@ class NotebookWidget extends Widget {
 
         showLoader();
         setTimeout(() => {
-            iframe.src = "http://localhost:" + port;
+            iframe.src = "/voila/" + id + '/';
             hideLoader(500);
         }, 2000);
         this.node.appendChild(iframe);

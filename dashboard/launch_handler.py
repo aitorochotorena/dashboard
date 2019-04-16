@@ -24,17 +24,16 @@ class LaunchHandler(HTTPHandler):
         id, name = val.split('-')
         id = id.strip()
         name = name.strip()
-        print(id)
-        print(name)
 
         with self.dashboard.session() as session:
             val = session.query(NotebookSQL).get(int(id))
+
             if not val:
                 self.write({})
                 return
 
-            if (id, name) in self.dashboard.subprocesses:
-                p, nbdir, nbpath, port = self.dashboard.subprocesses[(id, name)]
+            if id in self.dashboard.subprocesses:
+                p, nbdir, nbpath, port = self.dashboard.subprocesses[id]
 
             else:
                 nbdir = ap(join(self.dashboard.rundir, id))
@@ -46,9 +45,10 @@ class LaunchHandler(HTTPHandler):
                     fp.write(val.notebook)
 
                 port = find_free_port()
-                p = launch_voila_subprocess(nbpath, port)
-                self.dashboard.subprocesses[(id, name)] = (p, nbdir, nbpath, port)
+                p = launch_voila_subprocess(nbpath, port, '/voila/{id}/'.format(id=id), '/',)
+                self.dashboard.subprocesses[id] = (p, nbdir, nbpath, port)
 
             ret = val.to_dict()
             ret['port'] = port
+            ret['id'] = id
             self.write(ret)
