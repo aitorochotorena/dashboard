@@ -44,6 +44,7 @@ class ProxyWSHandler(tornado.websocket.WebSocketHandler):
         self.dashboard = dashboard
         self.proxy_path = proxy_path
         self.ws = None
+        self.closed = False
 
     @tornado.gen.coroutine
     def open(self, *args):
@@ -51,27 +52,28 @@ class ProxyWSHandler(tornado.websocket.WebSocketHandler):
         splits = path.split('/')
         id = splits[0]
         if id not in self.dashboard.subprocesses:
-            print('here')
-            # self.redirect('/api/v1/launch?val={id}-'.format(id=id))
+            self.redirect('/api/v1/launch?val={id}-'.format(id=id))
             return
 
         p, nbdir, nbpath, port = self.dashboard.subprocesses[id]
         url = '/'.join(splits[1:])
 
         def write(msg):
-            self.ws.write_message(msg)
-            print(msg)
+            if self.closed:
+                if self.ws:
+                    self.ws.close()
+            else:
+                self.write_message(msg)
+
         self.ws = yield tornado.websocket.websocket_connect('ws://localhost:{port}/{url}'.format(port=port, url=url),
                                                             on_message_callback=write)
 
     def on_message(self, message):
         if self.ws:
             self.ws.write_message(message)
-        else:
-            print('here1')
 
     def on_close(self):
         if self.ws:
             self.ws.close()
-        else:
-            print('here2')
+            self.ws = None
+            self.closed = True
