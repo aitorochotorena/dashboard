@@ -28,14 +28,12 @@ class ProxyHandler(HTTPHandler):
 
         p, nbdir, nbpath, port = self.dashboard.subprocesses[id]
 
-        def callback(response):
-            if response.body:
-                self.write(response.body)
-            self.finish()
-
         req = tornado.httpclient.HTTPRequest('http://localhost:{port}/{url}'.format(port=port, url='/'.join(splits[1:])))
         client = tornado.httpclient.AsyncHTTPClient()
-        client.fetch(req, callback, raise_error=False)
+        response = yield client.fetch(req, raise_error=False)
+        if response.body:
+            self.write(response.body)
+        self.finish()
 
 
 class ProxyWSHandler(tornado.websocket.WebSocketHandler):
