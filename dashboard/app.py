@@ -20,14 +20,14 @@ from .handler import HTMLHandler
 from .search_handler import SearchHandler
 from .launch_handler import LaunchHandler
 from .proxy_handler import ProxyHandler, ProxyWSHandler
-from ._version import __version__
+from ._version import VERSION
 
 _kernel_id_regex = r"(?P<kernel_id>\w+-\w+-\w+-\w+-\w+)"
 
 
 class Dashboard(Application):
     name = 'dashboard'
-    version = __version__
+    version = VERSION
     description = Unicode('''dashboard''')
 
     port = Integer(

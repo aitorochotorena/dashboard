@@ -1,5 +1,7 @@
 import os
 import os.path
+import tornado
+import tornado.gen
 import tornado.web
 import tornado.websocket
 import tornado.httpclient
@@ -15,7 +17,7 @@ class ProxyHandler(HTTPHandler):
         self.proxy_path = proxy_path
         super(ProxyHandler, self).initialize(**kwargs)
 
-    @tornado.web.asynchronous
+    @tornado.gen.coroutine
     def get(self, *args):
         '''Get the login page'''
         path = self.request.uri.replace(self.proxy_path, '', 1)
