@@ -1,5 +1,6 @@
 import os
 import os.path
+import time
 import tornado
 import tornado.gen
 import tornado.web
@@ -25,14 +26,21 @@ class ProxyHandler(HTTPHandler):
         id = splits[0]
 
         if id not in self.dashboard.subprocesses:
-            # self.redirect('/api/v1/launch?val={id}-'.format(id=id))
             return
 
         p, nbdir, nbpath, port = self.dashboard.subprocesses[id]
 
         req = tornado.httpclient.HTTPRequest('http://localhost:{port}/{url}'.format(port=port, url='/'.join(splits[1:])))
         client = tornado.httpclient.AsyncHTTPClient()
-        response = yield client.fetch(req, raise_error=False)
+        response = None
+        tries = 0
+        while response is None and tries < 10:
+            try:
+                response = yield client.fetch(req, raise_error=False)
+            except ConnectionRefusedError:
+                response = None
+                tries += 1
+                time.sleep(1000)
         if response.body:
             self.write(response.body)
         self.finish()
