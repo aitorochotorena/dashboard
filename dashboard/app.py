@@ -9,6 +9,7 @@ import tornado.web
 from tempfile import mkdtemp
 from traitlets.config.application import Application
 from traitlets import Unicode, Integer, Bool, Any
+from tornado_proxy_handler import ProxyHandler, ProxyWSHandler
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
@@ -19,7 +20,6 @@ from .storage import Base
 from .handler import HTMLHandler
 from .search_handler import SearchHandler
 from .launch_handler import LaunchHandler
-from .proxy_handler import ProxyHandler, ProxyWSHandler
 from ._version import VERSION
 
 _kernel_id_regex = r"(?P<kernel_id>\w+-\w+-\w+-\w+-\w+)"
