@@ -27,6 +27,9 @@ def add_fixtures(sqlalchemy_conn_string='sqlite:///tmp.db'):
     with open(os.path.abspath(os.path.join(os.path.dirname(__file__), 'examples', 'perspective.ipynb')), 'r') as fp:
         notebook5 = fp.read()
 
+    with open(os.path.abspath(os.path.join(os.path.dirname(__file__), 'examples', 'multigraph.ipynb')), 'r') as fp:
+        notebook6 = fp.read()
+
     nbs = [NotebookSQL(name='My Notebook 1',
                        notebook=notebook1,
                        created=datetime.now(),
@@ -45,6 +48,10 @@ def add_fixtures(sqlalchemy_conn_string='sqlite:///tmp.db'):
                        modified=datetime.now()),
            NotebookSQL(name='My Notebook 5',
                        notebook=notebook5,
+                       created=datetime.now(),
+                       modified=datetime.now()),
+           NotebookSQL(name='My Notebook 6',
+                       notebook=notebook6,
                        created=datetime.now(),
                        modified=datetime.now())]
 

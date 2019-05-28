@@ -7,3 +7,4 @@ socketIO-client-nexus>=0.7.6
 sseclient>=0.0.22
 tornado>=6.0.2
 -e git://github.com/timkpaine/voila.git@iframe#egg=voila
+voila-plain>=0.0.1

@@ -52,7 +52,7 @@ class ProxyWSHandler(tornado.websocket.WebSocketHandler):
         self.dashboard = dashboard
         self.proxy_path = proxy_path
         self.ws = None
-        self.closed = False
+        self.closed = True
 
     @tornado.gen.coroutine
     def open(self, *args):
@@ -60,11 +60,11 @@ class ProxyWSHandler(tornado.websocket.WebSocketHandler):
         splits = path.split('/')
         id = splits[0]
         if id not in self.dashboard.subprocesses:
-            self.redirect('/api/v1/launch?val={id}-'.format(id=id))
             return
 
         p, nbdir, nbpath, port = self.dashboard.subprocesses[id]
         url = '/'.join(splits[1:])
+        self.closed = False
 
         def write(msg):
             if self.closed:
