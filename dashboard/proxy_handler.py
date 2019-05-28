@@ -1,6 +1,6 @@
 import os
 import os.path
-import time
+import logging
 import tornado
 import tornado.gen
 import tornado.web
@@ -13,6 +13,7 @@ join = os.path.join
 
 
 class ProxyHandler(HTTPHandler):
+
     def initialize(self, dashboard=None, proxy_path='', **kwargs):
         self.dashboard = dashboard
         self.proxy_path = proxy_path
@@ -32,15 +33,7 @@ class ProxyHandler(HTTPHandler):
 
         req = tornado.httpclient.HTTPRequest('http://localhost:{port}/{url}'.format(port=port, url='/'.join(splits[1:])))
         client = tornado.httpclient.AsyncHTTPClient()
-        response = None
-        tries = 0
-        while response is None and tries < 10:
-            try:
-                response = yield client.fetch(req, raise_error=False)
-            except ConnectionRefusedError:
-                response = None
-                tries += 1
-                time.sleep(1000)
+        response = yield client.fetch(req, raise_error=False)
         self.set_status(response.code)
         if response.body:
             for header in response.headers:
@@ -76,7 +69,7 @@ class ProxyWSHandler(tornado.websocket.WebSocketHandler):
                     self.ws = None
             else:
                 if self.ws:
-                    self.write_message(msg)
+                    self.write_message(msg, binary=isinstance(msg, bytes))
         self.ws = yield tornado.websocket.websocket_connect('ws://localhost:{port}/{url}'.format(port=port, url=url),
                                                             on_message_callback=write)
 
