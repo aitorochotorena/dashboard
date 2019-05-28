@@ -1,6 +1,5 @@
 #!/bin/env python
 import sys
-import os.path
 import subprocess
 
 
@@ -20,18 +19,14 @@ def launch_voila(notebook_path, port=8866, base_url='/', server_url='/'):
     print('serving {path}'.format(path=notebook_path))
     from voila.app import Voila
     v = Voila()
-
-    v.notebook_path = notebook_path
-    v.port = int(port)
-
-    v.tornado_settings = {'headers': {'Content-Security-Policy': "frame-ancestors 'self' localhost:*"}}
-    v.nbconvert_template_paths.append(os.path.abspath(os.path.join(os.path.dirname(__file__), 'assets', 'voila', 'dashboard', 'nbconvert_templates')))
-    v.template_paths.append(os.path.abspath(os.path.join(os.path.dirname(__file__), 'assets', 'voila',  'dashboard', 'templates')))
-    v.template = 'default'
-
+    v.initialize([notebook_path,
+                  '--port', port,
+                  '--base_url', base_url,
+                  '--server_url', server_url,
+                  '--no-browser'])
     v.base_url = base_url
     v.server_url = server_url
-
+    v.tornado_settings = {'headers': {'Content-Security-Policy': "frame-ancestors 'self' localhost:*"}}
     v.start()
 
 
