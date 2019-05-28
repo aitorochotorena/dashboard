@@ -41,6 +41,7 @@ class ProxyHandler(HTTPHandler):
                 response = None
                 tries += 1
                 time.sleep(1000)
+        self.set_status(response.code)
         if response.body:
             for header in response.headers:
                 self.set_header(header, response.headers.get(header))
@@ -72,8 +73,10 @@ class ProxyWSHandler(tornado.websocket.WebSocketHandler):
             if self.closed:
                 if self.ws:
                     self.ws.close()
+                    self.ws = None
             else:
-                self.write_message(msg)
+                if self.ws:
+                    self.write_message(msg)
         self.ws = yield tornado.websocket.websocket_connect('ws://localhost:{port}/{url}'.format(port=port, url=url),
                                                             on_message_callback=write)
 
