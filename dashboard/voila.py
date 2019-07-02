@@ -11,7 +11,14 @@ def launch_voila_subprocess(notebook_path, port=8866, base_url='/', server_url='
                           str(port),
                           base_url,
                           server_url
-                          ])
+                          ],
+                         stdout=subprocess.PIPE,
+                         stderr=subprocess.PIPE,
+                         universal_newlines=True)
+    for stderr_line in iter(p.stderr.readline, ""):
+        # ready
+        if stderr_line.startswith('http'):
+            break
     return p
 
 
@@ -24,8 +31,6 @@ def launch_voila(notebook_path, port=8866, base_url='/', server_url='/'):
                   '--base_url', base_url,
                   '--server_url', server_url,
                   '--no-browser'])
-    v.base_url = base_url
-    v.server_url = server_url
     v.tornado_settings = {'headers': {'Content-Security-Policy': "frame-ancestors 'self' localhost:*"}}
     v.start()
 

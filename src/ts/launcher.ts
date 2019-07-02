@@ -1,5 +1,6 @@
 import {SplitPanel, TabPanel} from "@phosphor/widgets";
 import {DashboardWidget} from "./dashboard";
+import {showLoader} from "./loader";
 import {IRequestResult, request} from "./request";
 import {baseUrl} from "./utils";
 
@@ -16,6 +17,7 @@ function autocomplete(input: string): Promise<Array<{[key: string]: string}>> {
 }
 
 function launch(input: string): Promise<{[key: string]: string}> {
+    showLoader();
     return new Promise<{[key: string]: string}>((resolve, reject) => {
         request("get", baseUrl() + "api/v1/launch?val=" + input).then((res: IRequestResult) => {
             if (res.ok) {

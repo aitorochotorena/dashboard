@@ -59,4 +59,5 @@ class LaunchHandler(HTTPHandler):
             p, nbdir, nbpath, port = self.dashboard.subprocesses[id]
             ret['port'] = port
             ret['id'] = id
+            ret.pop('notebook', None)  # remove notebook
             self.write(ret)
