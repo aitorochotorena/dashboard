@@ -1,7 +1,6 @@
 run:  ## run server
 	python3 -m dashboard.server
 
-
 tests: ## Clean and Make unit tests
 	python3 -m pytest -v tests --cov=dashboard
 
