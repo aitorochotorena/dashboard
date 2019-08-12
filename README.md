@@ -1,6 +1,11 @@
 # dashboard
 creating dashboards from jupyter notebooks using [voila](https://github.com/QuantStack/voila) and [phosphor](https://github.com/phosphorjs/phosphor).
 
+[![Build Status](https://travis-ci.org/timkpaine/dashboard.svg?branch=master)](https://travis-ci.org/timkpaine/dashboard)
+![https://ci.appveyor.com/api/projects/status/32r7s2skrgm9ubva?svg=true](https://ci.appveyor.com/api/projects/status/32r7s2skrgm9ubva?svg=true)
+[![Coverage](https://codecov.io/gh/timkpaine/dashboard/branch/master/graph/badge.svg)](https://codecov.io/gh/timkpaine/dashboard)
+
+
 ![](https://raw.githubusercontent.com/timkpaine/dashboard/master/docs/img/example1.gif)
 
 ## Getting started
