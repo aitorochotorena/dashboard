@@ -6,6 +6,6 @@ requests>=2.21.0
 socketIO-client-nexus>=0.7.6
 sseclient>=0.0.22
 tornado>=6.0.2
-tornado-proxy-handler>=0.0.1
+tornado-proxy-handlers>=0.0.1
 voila>=0.0.11
 voila-plain>=0.0.2
