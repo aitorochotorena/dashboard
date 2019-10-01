@@ -1,7 +1,7 @@
 import {SplitPanel, TabPanel} from "@phosphor/widgets";
+import {IRequestResult, request} from "requests-helper";
 import {DashboardWidget} from "./dashboard";
 import {showLoader} from "./loader";
-import {IRequestResult, request} from "./request";
 import {baseUrl} from "./utils";
 
 function autocomplete(input: string): Promise<Array<{[key: string]: string}>> {
